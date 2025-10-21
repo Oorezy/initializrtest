@@ -1,0 +1,138 @@
+    <!DOCTYPE html>
+            <html xmlns:th="http://www.thymeleaf.org" 
+                  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+                  layout:decorate="~{layout}">
+            <head>
+                <title th:text="${appName} + ' - Home'">Home</title>
+            </head>
+            <body>
+                <div layout:fragment="content">
+                    ```html
+<body>
+    <!-- Hero Section -->
+    <section class="bg-light py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold">Welcome to Simple Blog</h1>
+                    <p class="lead">A modern, responsive blogging platform designed for simplicity and performance.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="btn btn-primary btn-lg">Get Started</a>
+                        <a href="#" class="btn btn-outline-secondary btn-lg">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="/images/blog-hero.svg" alt="Blog Hero" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brief Description -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2 text-center">
+                    <h2 class="mb-4">About Simple Blog</h2>
+                    <p class="lead">Simple Blog is a lightweight, cloud-native application that enables users to publish and manage blog posts with ease. Built with modern technologies like Spring Boot, Thymeleaf, and HTMX, it offers a responsive and intuitive user experience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Summary Area -->
+    <section class="bg-light py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <i class="bi bi-pencil-square display-4 text-primary mb-3"></i>
+                            <h3 class="card-title">Easy Blogging</h3>
+                            <p class="card-text">Create, edit, and delete your blog posts with our user-friendly interface. Support for rich text formatting using Markdown.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <i class="bi bi-people display-4 text-primary mb-3"></i>
+                            <h3 class="card-title">User Management</h3>
+                            <p class="card-text">Register and login with Keycloak integration. Role-based access control for anonymous and registered users.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <i class="bi bi-speedometer2 display-4 text-primary mb-3"></i>
+                            <h3 class="card-title">Performance</h3>
+                            <p class="card-text">Optimized for speed with Redis caching, PostgreSQL indexing, and CDN support for static assets.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Posts Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2 text-center mb-5">
+                    <h2>Latest Blog Posts</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <!-- Blog Posts List -->
+                    <div class="list-group">
+                        <th:block th:each="post : ${posts}">
+                            <a href="#" class="list-group-item list-group-item-action" th:href="@{/posts/{id}(id=${post.id})}">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1" th:text="${post.title}">Post Title</h5>
+                                    <small th:text="${#temporals.format(post.createdAt, 'yyyy-MM-dd')}">Date</small>
+                                </div>
+                                <p class="mb-1" th:text="${post.excerpt}">Post excerpt...</p>
+                                <small th:text="${post.author}">Author</small>
+                            </a>
+                        </th:block>
+                    </div>
+                    <!-- Pagination -->
+                    <nav class="mt-4" aria-label="Page navigation">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="bg-primary text-white py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h2 class="mb-4">Ready to start blogging?</h2>
+                    <p class="lead">Join Simple Blog today and share your thoughts with the world.</p>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <a href="#" class="btn btn-light btn-lg">Sign Up Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+```
+                </div>
+            </body>
+            </html>
